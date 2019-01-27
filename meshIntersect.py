@@ -117,16 +117,18 @@ print('cropped sphere points to image corners in: ', end-start, ' seconds')
 
 plt.scatter(spheres[:,0],spheres[:,2])
 plt.scatter(lims[:,0],lims[:,2])
-plt.show()
+# plt.show()
 print(np.shape(lims))
 # print(lims)
 
 
 # Find if/where a ray (generated from im2geo) intersects the spheres
 ray_dir = np.array([0.43118462, 0.13044104, 1.00168327])
+# ray_dir = np.array([ray_dir[2],ray_dir[0],ray_dir[1]])
 ray_dir = ray_dir/np.linalg.norm(ray_dir)
-ray_or = np.array([ -90.0693583,  -788.12009801,   69.17650223])
 
+ray_or = np.array([ -90.0693583,  -788.12009801,   69.17650223])
+# ray_or = np.array([ray_or[0],ray_or[2],ray_or[1]])
 
 for sp in spheres:
     x,y,z = [sp[0],sp[2],sp[1]]
@@ -143,8 +145,11 @@ for sp in spheres:
     pln_ray_int = ray_or + ray_dir*t
     # check if point is inside triangle
     avs = np.matmul(np.linalg.inv(pts),pln_ray_int.reshape(3,1))
-    print(avs.reshape(1,3))
+    print(avs.reshape(1,3)>0)
+    plt.scatter(pln_ray_int[0],pln_ray_int[1])
     if (avs>0).all():
         print('hello')
         print(avs.reshape(1,3))
         # hello
+
+plt.show()
