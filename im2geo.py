@@ -93,3 +93,4 @@ direction = np.matmul(R,hom_pt)
 origin = trns
 
 print("dir: ", np.shape(direction), '\n', "origin: ", np.shape(origin))
+print("dir: ", direction, '\n', "origin: ", origin)

@@ -42,16 +42,18 @@ def tri2sphere(p1,p2,p3):
 
     return np.array([c1,c2,c3, n1, n2, n3, rad])
 
+
+# outputs an array with vertex 1 elements, normal and vertex indices of a triangle
 def tri2triplus(inds, verts):
     i1,i2,i3 = inds
     p1 = verts[i1]
     p2 = verts[i2]
     p3 = verts[i3]
-    C = triCent(p1,p2,p3)
+    # C = triCent(p1,p2,p3)
     nrm = triNorm(p1,p2,p3)
-    c1, c2, c3 = C
+    # c1, c2, c3 = C
     n1, n2, n3 = nrm
-    return np.array([c1,c2,c3, n1, n2, n3, i1,i2,i3])
+    return np.array([p1[0],p1[1],p1[2], n1, n2, n3, i1,i2,i3])
 
 mesh = PlyData.read('/home/nader/scratch/mesh_test/final_crop.ply')
 # mesh = PlyData.read('/home/nader/scratch/mesh_test/final.ply')
@@ -117,8 +119,15 @@ plt.scatter(spheres[:,0],spheres[:,2])
 plt.scatter(lims[:,0],lims[:,2])
 plt.show()
 print(np.shape(lims))
-print(lims)
+# print(lims)
 a=1
 
 # Find if/where a ray (generated from im2geo) intersects the spheres
-# ray =
+ray_dir = np.array([0.43118462, 0.13044104, 1.00168327])
+ray_or = np.array([ -90.0693583,  -788.12009801,   69.17650223])
+
+for sp in spheres:
+    x,y,z = [sp[0],sp[2],sp[1]]
+
+
+    # print(x,y,z)
