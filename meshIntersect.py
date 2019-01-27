@@ -143,6 +143,8 @@ for sp in spheres:
     pln_ray_int = ray_or + ray_dir*t
     # check if point is inside triangle
     avs = np.matmul(np.linalg.inv(pts),pln_ray_int.reshape(3,1))
-    # print(avs.reshape(1,3))
+    print(avs.reshape(1,3))
     if (avs>0).all():
+        print('hello')
         print(avs.reshape(1,3))
+        # hello
