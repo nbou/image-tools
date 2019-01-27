@@ -53,7 +53,7 @@ def tri2triplus(inds, verts):
     nrm = triNorm(p1,p2,p3)
     # c1, c2, c3 = C
     n1, n2, n3 = nrm
-    return np.array([p1[0],p1[1],p1[2], n1, n2, n3, i1,i2,i3])
+    return np.array([p1[0],p1[1],p1[2], n1, n2, n3, int(i1),int(i2),int(i3)])
 
 mesh = PlyData.read('/home/nader/scratch/mesh_test/final_crop.ply')
 # mesh = PlyData.read('/home/nader/scratch/mesh_test/final.ply')
@@ -120,14 +120,29 @@ plt.scatter(lims[:,0],lims[:,2])
 plt.show()
 print(np.shape(lims))
 # print(lims)
-a=1
+
 
 # Find if/where a ray (generated from im2geo) intersects the spheres
 ray_dir = np.array([0.43118462, 0.13044104, 1.00168327])
+ray_dir = ray_dir/np.linalg.norm(ray_dir)
 ray_or = np.array([ -90.0693583,  -788.12009801,   69.17650223])
+
 
 for sp in spheres:
     x,y,z = [sp[0],sp[2],sp[1]]
-
-
     # print(x,y,z)
+    pln_nrm = sp[3:6]
+    pln_nrm = pln_nrm/np.linalg.norm(pln_nrm)
+    pln_d = np.linalg.norm([x,y,z])
+    p1 = np.array([x,y,z])
+    p2 = verts[np.int(sp[7])]
+    p3 = verts[np.int(sp[8])]
+    pts = np.column_stack((p1,p2,p3))
+    # calculate intersection point betweeen ray and triangle plane
+    t = (-(np.dot(pln_nrm,ray_or))+ pln_d)/(np.dot(pln_nrm,pln_d))
+    pln_ray_int = ray_or + ray_dir*t
+    # check if point is inside triangle
+    avs = np.matmul(np.linalg.inv(pts),pln_ray_int.reshape(3,1))
+    # print(avs.reshape(1,3))
+    if (avs>0).all():
+        print(avs.reshape(1,3))
