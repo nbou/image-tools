@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e8cec77e-8f09-4ad0-afd3-c09f303bff83" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/im2geo.py" beforeDir="false" afterPath="$PROJECT_DIR$/im2geo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meshIntersect.py" beforeDir="false" afterPath="$PROJECT_DIR$/meshIntersect.py" afterDir="false" />
-    </list>
+    <list default="true" id="e8cec77e-8f09-4ad0-afd3-c09f303bff83" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +13,7 @@
     <SUITE FILE_PATH="coverage/image_tools$csvFromPts.coverage" NAME="csvFromPts Coverage Results" MODIFIED="1539668376790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/image_tools$im2geo.coverage" NAME="im2geo Coverage Results" MODIFIED="1548557180684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/image_tools$random_crop.coverage" NAME="random_crop Coverage Results" MODIFIED="1534139881631" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/image_tools$meshIntersect.coverage" NAME="meshIntersect Coverage Results" MODIFIED="1548557725537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/image_tools$meshIntersect.coverage" NAME="meshIntersect Coverage Results" MODIFIED="1548572191640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="1735495567">
@@ -48,15 +45,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="5342" />
+          <entry key="Python Console" value="5570" />
           <entry key="dummy" value="5" />
-          <entry key="py" value="9253" />
+          <entry key="py" value="10040" />
+          <entry key="txt" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="5" />
-          <entry key="Python" value="14595" />
+          <entry key="PLAIN_TEXT" value="21" />
+          <entry key="Python" value="15610" />
         </counts>
       </usages-collector>
     </session>
@@ -75,13 +73,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/meshIntersect.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="130" column="4" selection-start-line="130" selection-start-column="4" selection-end-line="130" selection-end-column="4" />
+            <state relative-caret-position="366">
+              <caret line="147" column="31" lean-forward="true" selection-start-line="147" selection-start-column="31" selection-end-line="147" selection-end-column="31" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <marker date="1548557935302" expanded="true" signature="348:353" ph="..." />
-                <marker date="1548557935302" expanded="true" signature="904:1434" ph="..." />
-                <marker date="1548557935302" expanded="true" signature="1194:1434" ph="..." />
+                <marker date="1548572191627" expanded="true" signature="348:353" ph="..." />
+                <marker date="1548572191627" expanded="true" signature="904:1449" ph="..." />
+                <marker date="1548572191627" expanded="true" signature="1194:1449" ph="..." />
               </folding>
             </state>
           </provider>
@@ -127,6 +125,7 @@
       <find>-548.0942242556616</find>
       <find>-549.7552020317513</find>
       <find>verts</find>
+      <find>nrm</find>
     </findStrings>
     <replaceStrings>
       <replace>3</replace>
@@ -345,33 +344,54 @@
       <option name="presentableId" value="Default" />
       <updated>1534136092661</updated>
     </task>
+    <task id="LOCAL-00001" summary="27-01-19-1400">
+      <created>1548558071665</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1548558071666</updated>
+    </task>
+    <task id="LOCAL-00002" summary="27-01-19-1400">
+      <created>1548558126341</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1548558126341</updated>
+    </task>
+    <task id="LOCAL-00003" summary="27-01-19-1800">
+      <created>1548572623240</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1548572623240</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="2819" y="545" width="1602" height="873" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.14800514" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4993565" visible="true" weight="0.304" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4993565" weight="0.38881493" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4967825" visible="true" weight="0.30133334" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.497426" weight="0.388" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5006435" side_tool="true" weight="0.42343542" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5032175" side_tool="true" visible="true" weight="0.30133334" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3288948" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.28" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4993565" weight="0.28" />
       <window_info anchor="right" id="Coverage" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" x="2821" y="570" width="1598" height="847" id="SciView" order="3" visible="true" weight="0.46332046" />
+      <window_info anchor="right" x="2821" y="570" width="1598" height="847" id="SciView" order="3" visible="true" weight="0.46332046" />
       <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
@@ -380,6 +400,11 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="27-01-19-1400" />
+    <MESSAGE value="27-01-19-1800" />
+    <option name="LAST_COMMIT_MESSAGE" value="27-01-19-1800" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -406,8 +431,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/meshIntersect.py</url>
-          <line>122</line>
-          <option name="timeStamp" value="31" />
+          <line>130</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -540,13 +565,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/meshIntersect.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="130" column="4" selection-start-line="130" selection-start-column="4" selection-end-line="130" selection-end-column="4" />
+        <state relative-caret-position="366">
+          <caret line="147" column="31" lean-forward="true" selection-start-line="147" selection-start-column="31" selection-end-line="147" selection-end-column="31" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <marker date="1548557935302" expanded="true" signature="348:353" ph="..." />
-            <marker date="1548557935302" expanded="true" signature="904:1434" ph="..." />
-            <marker date="1548557935302" expanded="true" signature="1194:1434" ph="..." />
+            <marker date="1548572191627" expanded="true" signature="348:353" ph="..." />
+            <marker date="1548572191627" expanded="true" signature="904:1449" ph="..." />
+            <marker date="1548572191627" expanded="true" signature="1194:1449" ph="..." />
           </folding>
         </state>
       </provider>
