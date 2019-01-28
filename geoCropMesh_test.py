@@ -1,6 +1,8 @@
 from osgeo import gdal, osr
 import numpy as np
 import pyproj
+import matplotlib.pyplot as plt
+
 
 def GetExtent(gt,cols,rows):
     ''' Return list of corner coordinates from a geotransform
@@ -60,6 +62,11 @@ gt=ds.GetGeoTransform()
 cols = ds.RasterXSize
 rows = ds.RasterYSize
 ext=GetExtent(gt,cols,rows)
+
+band = ds.GetRasterBand(1)
+elevation = band.ReadAsArray()
+plt.imshow(elevation, cmap='gist_earth')
+plt.show()
 
 src_srs=osr.SpatialReference()
 src_srs.ImportFromWkt(ds.GetProjection())
