@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8cec77e-8f09-4ad0-afd3-c09f303bff83" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/im2geo.py" beforeDir="false" afterPath="$PROJECT_DIR$/im2geo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/meshIntersect.py" beforeDir="false" afterPath="$PROJECT_DIR$/meshIntersect.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,9 +15,23 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/image_tools$geoCropMesh.coverage" NAME="geoCropMesh Coverage Results" MODIFIED="1548317662919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/image_tools$csvFromPts.coverage" NAME="csvFromPts Coverage Results" MODIFIED="1539668376790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/image_tools$im2geo.coverage" NAME="im2geo Coverage Results" MODIFIED="1548557180684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/image_tools$im2geo.coverage" NAME="im2geo Coverage Results" MODIFIED="1548575763992" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/image_tools$random_crop.coverage" NAME="random_crop Coverage Results" MODIFIED="1534139881631" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/image_tools$meshIntersect.coverage" NAME="meshIntersect Coverage Results" MODIFIED="1548573179653" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/image_tools$meshIntersect.coverage" NAME="meshIntersect Coverage Results" MODIFIED="1548576182993" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="1735495567">
@@ -47,16 +63,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="5570" />
+          <entry key="Python Console" value="5594" />
           <entry key="dummy" value="5" />
-          <entry key="py" value="10066" />
+          <entry key="py" value="10316" />
           <entry key="txt" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="21" />
-          <entry key="Python" value="15636" />
+          <entry key="Python" value="15910" />
         </counts>
       </usages-collector>
     </session>
@@ -66,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/im2geo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="95" column="50" selection-start-line="95" selection-start-column="50" selection-end-line="95" selection-end-column="50" />
+            <state relative-caret-position="173">
+              <caret line="72" column="7" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -75,13 +91,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/meshIntersect.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="146" column="10" selection-start-line="146" selection-start-column="10" selection-end-line="146" selection-end-column="10" />
+            <state relative-caret-position="251">
+              <caret line="143" column="28" selection-start-line="143" selection-start-column="28" selection-end-line="143" selection-end-column="28" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <marker date="1548573203080" expanded="true" signature="348:353" ph="..." />
-                <marker date="1548573203080" expanded="true" signature="904:1449" ph="..." />
-                <marker date="1548573203080" expanded="true" signature="1194:1449" ph="..." />
+                <marker date="1548576182982" expanded="true" signature="348:353" ph="..." />
+                <marker date="1548576182982" expanded="true" signature="904:1449" ph="..." />
+                <marker date="1548576182982" expanded="true" signature="1194:1449" ph="..." />
               </folding>
             </state>
           </provider>
@@ -102,7 +118,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geoCropMesh.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-221">
+            <state relative-caret-position="34">
               <caret line="56" column="16" lean-forward="true" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="33" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
@@ -128,6 +144,7 @@
       <find>-549.7552020317513</find>
       <find>verts</find>
       <find>nrm</find>
+      <find>ray_dir</find>
     </findStrings>
     <replaceStrings>
       <replace>3</replace>
@@ -136,6 +153,7 @@
       <replace>xmax</replace>
       <replace>xmin</replace>
       <replace>spheres</replace>
+      <replace>ray_or</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -381,11 +399,32 @@
       <option name="project" value="LOCAL" />
       <updated>1548572991039</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="27-01-19-1800">
+      <created>1548573227098</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1548573227098</updated>
+    </task>
+    <task id="LOCAL-00007" summary="27-01-19-1800">
+      <created>1548573290538</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1548573290538</updated>
+    </task>
+    <task id="LOCAL-00008" summary="27-01-19-1800">
+      <created>1548574802694</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1548574802694</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2819" y="545" width="1602" height="873" extended-state="6" />
+    <frame x="2819" y="545" width="1602" height="873" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.14800514" />
@@ -393,23 +432,23 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4967825" weight="0.30133334" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4967825" visible="true" weight="0.388" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49420848" visible="true" weight="0.30133334" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4954955" weight="0.47866666" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5032175" side_tool="true" visible="true" weight="0.388" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3288948" />
-      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4993565" weight="0.28" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5057915" side_tool="true" visible="true" weight="0.30133334" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4993565" weight="0.328" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.7258687" weight="0.28" />
       <window_info anchor="right" id="Coverage" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" x="2821" y="570" width="1598" height="847" id="SciView" order="3" visible="true" weight="0.46332046" />
-      <window_info anchor="right" id="Database" order="4" />
+      <window_info active="true" anchor="right" x="2821" y="570" width="1598" height="847" id="SciView" order="3" visible="true" weight="0.40862292" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32947233" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -438,7 +477,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/im2geo.py</url>
-          <line>84</line>
+          <line>88</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -448,8 +487,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/meshIntersect.py</url>
-          <line>130</line>
+          <line>132</line>
           <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/im2geo.py</url>
+          <line>72</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -552,6 +596,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/geoCropMesh.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="56" column="16" lean-forward="true" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+            <marker date="1548318549731" expanded="true" signature="1826:1831" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/geoCropMesh_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1428">
@@ -562,33 +617,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geoCropMesh.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-221">
-          <caret line="56" column="16" lean-forward="true" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-            <marker date="1548318549731" expanded="true" signature="1826:1831" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/im2geo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="95" column="50" selection-start-line="95" selection-start-column="50" selection-end-line="95" selection-end-column="50" />
+        <state relative-caret-position="173">
+          <caret line="72" column="7" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/meshIntersect.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="146" column="10" selection-start-line="146" selection-start-column="10" selection-end-line="146" selection-end-column="10" />
+        <state relative-caret-position="251">
+          <caret line="143" column="28" selection-start-line="143" selection-start-column="28" selection-end-line="143" selection-end-column="28" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <marker date="1548573203080" expanded="true" signature="348:353" ph="..." />
-            <marker date="1548573203080" expanded="true" signature="904:1449" ph="..." />
-            <marker date="1548573203080" expanded="true" signature="1194:1449" ph="..." />
+            <marker date="1548576182982" expanded="true" signature="348:353" ph="..." />
+            <marker date="1548576182982" expanded="true" signature="904:1449" ph="..." />
+            <marker date="1548576182982" expanded="true" signature="1194:1449" ph="..." />
           </folding>
         </state>
       </provider>

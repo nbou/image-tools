@@ -123,12 +123,12 @@ print(np.shape(lims))
 
 
 # Find if/where a ray (generated from im2geo) intersects the spheres
-ray_dir = np.array([0.43118462, 0.13044104, 1.00168327])
+ray_dir = np.array([-0.23512675, -0.40052646,  0.99528809])#np.array([0.43118462, 0.13044104, 1.00168327])
 # ray_dir = np.array([ray_dir[2],ray_dir[0],ray_dir[1]])
 ray_dir = ray_dir/np.linalg.norm(ray_dir)
 
-ray_or = np.array([ -90.0693583,  -788.12009801,   69.17650223])
-# ray_or = np.array([ray_or[0],ray_or[2],ray_or[1]])
+ray_or = np.array([85.29804681, -548.70514385,   53.60263709])#np.array([ -90.0693583,  -788.12009801,   69.17650223])
+# ray_or = np.array([ray_or[2],ray_or[0],ray_or[1]])
 
 for sp in spheres:
     x,y,z = [sp[0],sp[2],sp[1]]
@@ -140,12 +140,12 @@ for sp in spheres:
     p2 = verts[np.int(sp[7])]
     p3 = verts[np.int(sp[8])]
     pts = np.column_stack((p1,p2,p3))
-    # calculate intersection point betweeen ray and triangle plane
+    # calculate intersection point between ray and triangle plane
     t = (-(np.dot(pln_nrm,ray_or))+ pln_d)/(np.dot(pln_nrm,pln_d))
     pln_ray_int = ray_or + ray_dir*t
     # check if point is inside triangle
     avs = np.matmul(np.linalg.inv(pts),pln_ray_int.reshape(3,1))
-    print(avs.reshape(1,3)>0)
+    # print(avs.reshape(1,3)>0)
     plt.scatter(pln_ray_int[0],pln_ray_int[1])
     if (avs>0).all():
         print('hello')
