@@ -62,7 +62,7 @@ gt=ds.GetGeoTransform()
 cols = ds.RasterXSize
 rows = ds.RasterYSize
 ext=GetExtent(gt,cols,rows)
-
+print(ext)
 band = ds.GetRasterBand(1)
 elevation = band.ReadAsArray()
 plt.imshow(elevation, cmap='gist_earth')

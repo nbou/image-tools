@@ -121,29 +121,47 @@ plt.scatter(lims[:,0],lims[:,2])
 print(np.shape(lims))
 # print(lims)
 
-
+# R1,R2,R3
 # Find if/where a ray (generated from im2geo) intersects the spheres
-ray_dir = np.array([-0.23512675, -0.40052646,  0.99528809])#np.array([0.43118462, 0.13044104, 1.00168327])
+ray_dir = np.array([0.05386494, 0.31301034,  0.99528809])#np.array([0.43118462, 0.13044104, 1.00168327])
 ray_dir = np.array([ray_dir[1],ray_dir[0],ray_dir[2]])
 ray_dir = ray_dir/np.linalg.norm(ray_dir)
 
-ray_or = np.array([85.29804681, -548.70514385,   53.60263709])#np.array([ -90.0693583,  -788.12009801,   69.17650223])
+ray_or = np.array([185.29804681, -548.70514385,   53.60263709])#np.array([ -90.0693583,  -788.12009801,   69.17650223])
 ray_or = np.array([ray_or[1],ray_or[0],ray_or[2]])
 
-for sp in spheres:
+# ## (R3,R2),R1
+# # Find if/where a ray (generated from im2geo) intersects the spheres
+# ray_dir = np.array([0.05840763, 0.31392563, 1.00327564])#np.array([0.43118462, 0.13044104, 1.00168327])
+# ray_dir = np.array([ray_dir[1],ray_dir[0],ray_dir[2]])
+# ray_dir = ray_dir/np.linalg.norm(ray_dir)
+#
+# ray_or = np.array([185.29804681, -548.70514385,   53.60263709])#np.array([ -90.0693583,  -788.12009801,   69.17650223])
+# ray_or = np.array([ray_or[1],ray_or[0],ray_or[2]])
+
+for sp in lims:
     x,y,z = [sp[0],sp[2],sp[1]]
     # print(x,y,z)
     pln_nrm = sp[3:6]
+    # print(sp, pln_nrm)
     pln_nrm = pln_nrm/np.linalg.norm(pln_nrm)
     pln_d = np.linalg.norm([x,y,z])
     p1 = np.array([x,y,z])
     p2 = verts[np.int(sp[7])]
+    # p2 = np.array([p2[0],p2[2],p2[1]])
     p3 = verts[np.int(sp[8])]
+    # p3 = np.array([p3[0], p3[2], p3[1]])
+    # print(p1,p2,p3)
     pts = np.column_stack((p1,p2,p3))
     # calculate intersection point between ray and triangle plane
-    t = (-(np.dot(pln_nrm,ray_or))+ pln_d)/(np.dot(pln_nrm,pln_d))
+    # t = -(np.dot(pln_nrm,ray_or)+ pln_d)/(np.dot(pln_nrm,ray_dir))
+    t_denom = (np.dot(pln_nrm,ray_dir))
+    pln_ray_dist = p1 - ray_or
+    t = np.dot(pln_ray_dist,pln_nrm)/t_denom
+
+    # print(t)
     pln_ray_int = ray_or + ray_dir*t
-    print(pln_ray_int)
+    # print(pln_ray_int)
     # check if point is inside triangle
     avs = np.matmul(np.linalg.inv(pts),pln_ray_int.reshape(3,1))
     # print(avs.reshape(1,3)>0)
