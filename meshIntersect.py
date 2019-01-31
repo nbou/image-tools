@@ -162,7 +162,6 @@ for sp in lims:
     # print(t)
     pln_ray_int = ray_or + ray_dir*t
     # print(pln_ray_int)
-
     # check if point is inside triangle (using barycentric method)
     v0 = p3 - p1
     v1 = p2 - p1
