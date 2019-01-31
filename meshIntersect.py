@@ -98,7 +98,7 @@ gtfpath = '/home/nader/scratch/PR_20100604_080817_570_LC16.tif'
 # gtfpath = '/home/nader/scratch/PR_20100604_080818_584_LC16.tif'
 ymin, ymax, xmin, xmax = geoCropMesh.meshCropPts(olon,olat,gtfpath)
 # add buffer to bounds
-buffer = np.float(0.5)
+buffer = np.float(0.75)
 xmin = xmin - buffer*(xmax-xmin)
 xmax = xmax + buffer*(xmax-xmin)
 ymin = ymin - buffer*(ymax-ymin)
@@ -111,7 +111,7 @@ ymax = ymax + buffer*(ymax-ymin)
 # crop spheres matrix using the corners from the chosen image
 start=time.time()
 xlim = spheres[np.where(np.logical_and(np.greater_equal(xmax,spheres[:,0]),np.less_equal(xmin, spheres[:,0])))]
-lims =  xlim[np.where(np.logical_and(np.greater_equal(ymax, xlim[:,2]),np.less_equal(ymin, xlim[:,2])))]
+lims = xlim[np.where(np.logical_and(np.greater_equal(ymax, xlim[:,2]),np.less_equal(ymin, xlim[:,2])))]
 end = time.time()
 print('cropped sphere points to image corners in: ', end-start, ' seconds')
 
@@ -130,7 +130,7 @@ ray_dir = ray_dir/np.linalg.norm(ray_dir)
 ray_or = np.array([185.29804681, -548.70514385,   53.60263709])#np.array([ -90.0693583,  -788.12009801,   69.17650223])
 ray_or = np.array([ray_or[1],ray_or[0],ray_or[2]])
 
-# ## (R3,R2),R1
+## (R3,R2),R1
 # # Find if/where a ray (generated from im2geo) intersects the spheres
 # ray_dir = np.array([0.05840763, 0.31392563, 1.00327564])#np.array([0.43118462, 0.13044104, 1.00168327])
 # ray_dir = np.array([ray_dir[1],ray_dir[0],ray_dir[2]])
@@ -162,13 +162,22 @@ for sp in lims:
     # print(t)
     pln_ray_int = ray_or + ray_dir*t
     # print(pln_ray_int)
-    # check if point is inside triangle
-    avs = np.matmul(np.linalg.inv(pts),pln_ray_int.reshape(3,1))
-    # print(avs.reshape(1,3)>0)
-    plt.scatter(pln_ray_int[0],pln_ray_int[1])
-    if (avs>0).all():
+
+    # check if point is inside triangle (using barycentric method)
+    v0 = p3 - p1
+    v1 = p2 - p1
+    v2 = pln_ray_int - p1
+    # u = ((v1.v1)(v2.v0)-(v1.v0)(v2.v1)) / ((v0.v0)(v1.v1) - (v0.v1)(v1.v0))
+    u = np.divide((np.dot(np.dot(v1,v1),np.dot(v2,v0)) - np.dot(np.dot(v1,v0),np.dot(v2,v1)))
+                  ,np.dot(np.dot(v0,v0),np.dot(v1,v1))-np.dot(np.dot(v0,v1),np.dot(v1,v0)))
+    # v = ((v0.v0)(v2.v1) - (v0.v1)(v2.v0)) / ((v0.v0)(v1.v1) - (v0.v1)(v1.v0))
+    v = np.divide((np.dot(np.dot(v0,v0),np.dot(v2,v1)) - np.dot(np.dot(v0,v1),np.dot(v2,v0)))
+                  ,np.dot(np.dot(v0,v0),np.dot(v1,v1))-np.dot(np.dot(v0,v1),np.dot(v1,v0)))
+    if u >=0 and v>=0:
         print('hello')
-        print(avs.reshape(1,3))
-        # hello
+    print(u,v)
+
+    plt.scatter(pln_ray_int[0],pln_ray_int[1])
+
 
 plt.show()
