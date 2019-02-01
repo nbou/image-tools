@@ -145,6 +145,7 @@ for sp in lims:
     x,y,z = [sp[0],sp[2],sp[1]]
     # print(x,y,z)
     pln_nrm = sp[3:6]
+    pln_nrm = np.array([pln_nrm[0],pln_nrm[2],pln_nrm[1]])
     # print(sp, pln_nrm)
     pln_nrm = pln_nrm/np.linalg.norm(pln_nrm)
     pln_d = np.linalg.norm([x,y,z])
@@ -157,7 +158,7 @@ for sp in lims:
     pts = np.column_stack((p1,p2,p3))
     # calculate intersection point between ray and triangle plane
     # t = -(np.dot(pln_nrm,ray_or)+ pln_d)/(np.dot(pln_nrm,ray_dir))
-    t_denom = (np.dot(pln_nrm,ray_dir))
+    t_denom = (np.dot(ray_dir,pln_nrm))
     pln_ray_dist = p1 - ray_or
     t = np.divide(np.dot(pln_ray_dist,pln_nrm),t_denom)
 
