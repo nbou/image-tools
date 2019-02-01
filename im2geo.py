@@ -3,7 +3,7 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-
+import calParser
 
 
 
@@ -37,8 +37,10 @@ import matplotlib.pyplot as plt
 
 
 # camera distortion parameters and intrinsic matrix (from calibration file)
-dist = np.array([0.15808590, 0.76137626, 0.00569993, -0.00067913])
-cam = np.array([[1736.49233331, 0.00000000, 687.23531391],[0.00000000, 1733.74525406, 501.08026641],[0.00000000, 0.00000000, 1.00000000]])
+# dist = np.array([0.15808590, 0.76137626, 0.00569993, -0.00067913])
+# cam = np.array([[1736.49233331, 0.00000000, 687.23531391],[0.00000000, 1733.74525406, 501.08026641],[0.00000000, 0.00000000, 1.00000000]])
+
+cam,dist = calParser.parseCal('/home/nader/scratch/ng2_scaled_baseline.calib')
 
 # point(s) of interest
 u,v = 1360/2,1024/2
@@ -68,7 +70,11 @@ pt_undist = cv2.undistortPoints(pt,cam,dist, P=cam)
 # print(np.shape(pose))
 # 14622 	1275638897.5708909034729004 	-43.6148313541364132 	147.2237999171593685 	185.2980468077252851 	-548.7051438547742919 	53.6026370929670719 	-0.0036693185137814 	-0.0119684021682900 	-0.3926109128526320 	PR_20100604_080817_570_LC16.png
 #      poseID, timestamp,                   lat                 long                    X  (north)            Y (east)          Z (depth)           X euler (rad)       Y-euler             Z-euler
-pose = [14622, 1275638897.5708909034729004,-43.6148313541364132,147.2237999171593685,185.2980468077252851,-548.7051438547742919,53.6026370929670719,-0.0036693185137814,-0.0119684021682900, -0.3926109128526320]
+# pose = [14622, 1275638897.5708909034729004,-43.6148313541364132,147.2237999171593685,185.2980468077252851,-548.7051438547742919,53.6026370929670719,-0.0036693185137814,-0.0119684021682900, -0.3926109128526320]
+#
+posepth = '/home/nader/scratch/stereo_pose_est.data'
+poseim = 'PR_20100604_080817_570_LC16'
+pose = calParser.parsePose(posepth,poseim)
 # print(np.shape(pose))
 trns = np.array(pose[4:7])
 angs = np.array(pose[7:11])
