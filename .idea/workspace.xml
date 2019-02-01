@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8cec77e-8f09-4ad0-afd3-c09f303bff83" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/im2geo_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/meshIntersect.py" beforeDir="false" afterPath="$PROJECT_DIR$/meshIntersect.py" afterDir="false" />
     </list>
@@ -14,9 +15,9 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/image_tools$geoCropMesh.coverage" NAME="geoCropMesh Coverage Results" MODIFIED="1548652351272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/image_tools$csvFromPts.coverage" NAME="csvFromPts Coverage Results" MODIFIED="1539668376790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/image_tools$im2geo.coverage" NAME="im2geo Coverage Results" MODIFIED="1548735655629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/image_tools$im2geo.coverage" NAME="im2geo Coverage Results" MODIFIED="1548921660963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/image_tools$random_crop.coverage" NAME="random_crop Coverage Results" MODIFIED="1534139881631" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/image_tools$meshIntersect.coverage" NAME="meshIntersect Coverage Results" MODIFIED="1548915756781" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/image_tools$meshIntersect.coverage" NAME="meshIntersect Coverage Results" MODIFIED="1548988088675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -52,28 +53,28 @@
           <entry key="pgm" value="2" />
           <entry key="png" value="4" />
           <entry key="pstat" value="1" />
-          <entry key="py" value="16" />
+          <entry key="py" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="8" />
           <entry key="Profiler Session" value="1" />
-          <entry key="Python" value="16" />
+          <entry key="Python" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="6262" />
+          <entry key="Python Console" value="6342" />
           <entry key="dummy" value="5" />
-          <entry key="py" value="11151" />
+          <entry key="py" value="12028" />
           <entry key="txt" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="24" />
-          <entry key="Python" value="17413" />
+          <entry key="Python" value="18370" />
         </counts>
       </usages-collector>
     </session>
@@ -83,22 +84,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/im2geo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1479">
-              <caret line="89" column="25" selection-start-line="89" selection-start-column="25" selection-end-line="89" selection-end-column="35" />
+            <state relative-caret-position="102">
+              <caret line="8" lean-forward="true" selection-end-line="99" selection-end-column="51" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/im2geo_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1552">
+              <caret line="99" column="51" selection-start-line="99" selection-start-column="51" selection-end-line="99" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/meshIntersect.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="177" selection-start-line="177" selection-end-line="177" />
+            <state relative-caret-position="1059">
+              <caret line="177" column="35" selection-start-line="177" selection-start-column="35" selection-end-line="177" selection-end-column="35" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <marker date="1548915818679" expanded="true" signature="348:353" ph="..." />
-                <marker date="1548915818679" expanded="true" signature="904:1449" ph="..." />
-                <marker date="1548915818679" expanded="true" signature="1194:1449" ph="..." />
+                <marker date="1548993297252" expanded="true" signature="348:353" ph="..." />
+                <marker date="1548993297252" expanded="true" signature="904:1449" ph="..." />
+                <marker date="1548993297252" expanded="true" signature="1194:1449" ph="..." />
               </folding>
             </state>
           </provider>
@@ -107,7 +117,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geoCropMesh_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1054">
+            <state relative-caret-position="320">
               <caret line="65" selection-start-line="65" selection-end-line="65" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
@@ -119,7 +129,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geoCropMesh.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
+            <state relative-caret-position="17">
               <caret line="54" selection-start-line="54" selection-end-line="54" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
@@ -146,6 +156,8 @@
       <find>verts</find>
       <find>nrm</find>
       <find>ray_dir</find>
+      <find>pts</find>
+      <find>p2</find>
     </findStrings>
     <replaceStrings>
       <replace>y</replace>
@@ -156,6 +168,7 @@
       <replace>ray_or</replace>
       <replace>3</replace>
       <replace>np.dot(</replace>
+      <replace>pln_nrm</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -171,6 +184,7 @@
         <option value="$PROJECT_DIR$/geoCropMesh_test.py" />
         <option value="$PROJECT_DIR$/im2geo.py" />
         <option value="$PROJECT_DIR$/meshIntersect.py" />
+        <option value="$PROJECT_DIR$/im2geo_test.py" />
       </list>
     </option>
   </component>
@@ -437,32 +451,40 @@
       <option name="project" value="LOCAL" />
       <updated>1548649267487</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="28-01-19-1400">
+      <created>1548915887466</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1548915887467</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="2819" y="545" width="1602" height="873" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.14800514" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.488417" visible="true" weight="0.46133333" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.44272843" weight="0.29866666" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.48713" visible="true" weight="0.38266668" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.44144145" weight="0.45066667" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.51158303" side_tool="true" visible="true" weight="0.46133333" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.51287" side_tool="true" visible="true" weight="0.38266668" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4980695" weight="0.328" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.72265124" weight="0.28" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" x="2821" y="570" width="1598" height="847" id="SciView" order="3" visible="true" weight="0.40862292" />
+      <window_info anchor="right" x="2821" y="570" width="1598" height="847" id="SciView" order="3" visible="true" weight="0.08236808" />
       <window_info anchor="right" id="Database" order="4" weight="0.32947233" />
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" />
     </layout>
@@ -504,7 +526,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/meshIntersect.py</url>
-          <line>141</line>
+          <line>144</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -618,16 +640,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/im2geo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1479">
-          <caret line="89" column="25" selection-start-line="89" selection-start-column="25" selection-end-line="89" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/geoCropMesh_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
+        <state relative-caret-position="320">
           <caret line="65" selection-start-line="65" selection-end-line="65" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
@@ -637,7 +652,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/geoCropMesh.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
+        <state relative-caret-position="17">
           <caret line="54" selection-start-line="54" selection-end-line="54" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
@@ -648,14 +663,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/meshIntersect.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="177" selection-start-line="177" selection-end-line="177" />
+        <state relative-caret-position="1059">
+          <caret line="177" column="35" selection-start-line="177" selection-start-column="35" selection-end-line="177" selection-end-column="35" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <marker date="1548915818679" expanded="true" signature="348:353" ph="..." />
-            <marker date="1548915818679" expanded="true" signature="904:1449" ph="..." />
-            <marker date="1548915818679" expanded="true" signature="1194:1449" ph="..." />
+            <marker date="1548993297252" expanded="true" signature="348:353" ph="..." />
+            <marker date="1548993297252" expanded="true" signature="904:1449" ph="..." />
+            <marker date="1548993297252" expanded="true" signature="1194:1449" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/im2geo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" lean-forward="true" selection-end-line="99" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/im2geo_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1552">
+          <caret line="99" column="51" selection-start-line="99" selection-start-column="51" selection-end-line="99" selection-end-column="51" />
         </state>
       </provider>
     </entry>

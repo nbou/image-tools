@@ -141,31 +141,29 @@ ray_or = np.array([ray_or[1],ray_or[0],ray_or[2]])
 # ray_or = np.array([185.29804681, -548.70514385,   53.60263709])#np.array([ -90.0693583,  -788.12009801,   69.17650223])
 # ray_or = np.array([ray_or[1],ray_or[0],ray_or[2]])
 
+# go through each triangle in the mesh and check if the ray intersects it
 for sp in lims:
     x,y,z = [sp[0],sp[2],sp[1]]
     # print(x,y,z)
-    pln_nrm = sp[3:6]
-    pln_nrm = np.array([pln_nrm[0],pln_nrm[2],pln_nrm[1]])
+    pln_nrm = sp[3:6]   # extract normal for triangle
+    pln_nrm = np.array([pln_nrm[0],pln_nrm[2],pln_nrm[1]])  # shuffle the xyz coords to match the ray
     # print(sp, pln_nrm)
-    pln_nrm = pln_nrm/np.linalg.norm(pln_nrm)
-    pln_d = np.linalg.norm([x,y,z])
+    pln_nrm = pln_nrm/np.linalg.norm(pln_nrm)   # normalise triangle normal
+    pln_d = np.linalg.norm([x,y,z])   # d in plane equation (distance from point to (0,0,0))
+    # specify triangle vertices p1,p2,p3
     p1 = np.array([x,y,z])
     p2 = verts[np.int(sp[7])]
     p2 = np.array([p2[0],p2[2],p2[1]])
     p3 = verts[np.int(sp[8])]
     p3 = np.array([p3[0], p3[2], p3[1]])
-    # print(p1,p2,p3)
-    pts = np.column_stack((p1,p2,p3))
-    # calculate intersection point between ray and triangle plane
-    # t = -(np.dot(pln_nrm,ray_or)+ pln_d)/(np.dot(pln_nrm,ray_dir))
+
+    # calculate intersection point between ray (origin + t*direction) and triangle plane
     t_denom = (np.dot(ray_dir,pln_nrm))
     pln_ray_dist = p1 - ray_or
     t = np.divide(np.dot(pln_ray_dist,pln_nrm),t_denom)
-
-    # print(t)
     pln_ray_int = ray_or + ray_dir*t
-    # print(pln_ray_int)
-    # check if point is inside triangle (using barycentric method)
+
+    # check if point is inside triangle (using barycentric method http://blackpawn.com/texts/pointinpoly/)
     v0 = p3 - p1
     v1 = p2 - p1
     v2 = pln_ray_int - p1
@@ -177,21 +175,12 @@ for sp in lims:
     invDenom = 1 / (dot00 * dot11 - dot01 * dot01)
     u = (dot11 * dot02 - dot01 * dot12) * invDenom
     v = (dot00 * dot12 - dot01 * dot02) * invDenom
-
     if (u >=0) and (v>=0) and (u+v<1):
         print(p1)
         print(p2)
         print(p3)
         print(pln_ray_int)
         print('hello')
-        # corners_x = np.array([p1[0], p2[0], p3[0]])
-        # corners_y = np.array([p1[1], p2[1], p3[1]])
-        # corners_z = np.array([p1[2], p2[2], p3[2]])
-        # plt.scatter(corners_x, corners_y)
-        # plt.scatter(pln_ray_int[0], pln_ray_int[1])
-        # plt.show()
-        # print(u+v)
-    # print(u,v)
 
     # plt.scatter(pln_ray_int[0],pln_ray_int[1])
 
