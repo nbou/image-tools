@@ -41,7 +41,7 @@ dist = np.array([0.15808590, 0.76137626, 0.00569993, -0.00067913])
 cam = np.array([[1736.49233331, 0.00000000, 687.23531391],[0.00000000, 1733.74525406, 501.08026641],[0.00000000, 0.00000000, 1.00000000]])
 
 # point(s) of interest
-u,v = 1000,1000
+u,v = 1360/2,1024/2
 pt = np.array([[[u,v]]], dtype=np.float32)
 
 # undistort poi(s)
@@ -86,8 +86,8 @@ R3 = np.array([[ np.cos(angs[2]), np.sin(angs[2]), 0],
                [-np.sin(angs[2]), np.cos(angs[2]), 0],
                [0,                0,               1]])
 
-R = np.matmul(np.matmul(R1,R2), R3)
-# R = np.matmul(np.matmul(R3,R2),R1)
+# R = np.matmul(np.matmul(R1,R2), R3)
+R = np.matmul(np.matmul(R3,R2),R1)
 # project point of interest into 3D (cam-1 * pt)
 hom_pt = np.array([pt_undist[0][0][0], pt_undist[0][0][1], 1])
 hom_pt = np.matmul(np.linalg.inv(cam),hom_pt)

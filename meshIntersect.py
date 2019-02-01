@@ -62,6 +62,7 @@ verts= np.transpose(np.array([mesh['vertex'].data['x'],mesh['vertex'].data['y'],
 # print(np.shape(verts))
 
 tri_corners = np.array(mesh['face'].data['vertex_indices'])
+print(np.shape(tri_corners))
 mesh=None
 # tree = KDTree(verts)
 
@@ -115,22 +116,23 @@ lims = xlim[np.where(np.logical_and(np.greater_equal(ymax, xlim[:,2]),np.less_eq
 end = time.time()
 print('cropped sphere points to image corners in: ', end-start, ' seconds')
 
-plt.scatter(spheres[:,0],spheres[:,2])
-plt.scatter(lims[:,0],lims[:,2])
+# plt.scatter(spheres[:,0],spheres[:,2])
+# plt.scatter(lims[:,0],lims[:,2])
 # plt.show()
 print(np.shape(lims))
 # print(lims)
 
 # R1,R2,R3
 # Find if/where a ray (generated from im2geo) intersects the spheres
-ray_dir = np.array([0.05386494, 0.31301034,  0.99528809])#np.array([0.43118462, 0.13044104, 1.00168327])
+# ray_dir = np.array([0.05386494, 0.31301034,  0.99528809])#np.array([0.43118462, 0.13044104, 1.00168327])
+ray_dir = np.array([-0.00169494, -0.00685659,  1.00000357])
 ray_dir = np.array([ray_dir[1],ray_dir[0],ray_dir[2]])
 ray_dir = ray_dir/np.linalg.norm(ray_dir)
 
 ray_or = np.array([185.29804681, -548.70514385,   53.60263709])#np.array([ -90.0693583,  -788.12009801,   69.17650223])
 ray_or = np.array([ray_or[1],ray_or[0],ray_or[2]])
 
-## (R3,R2),R1
+# # (R3,R2),R1
 # # Find if/where a ray (generated from im2geo) intersects the spheres
 # ray_dir = np.array([0.05840763, 0.31392563, 1.00327564])#np.array([0.43118462, 0.13044104, 1.00168327])
 # ray_dir = np.array([ray_dir[1],ray_dir[0],ray_dir[2]])
@@ -148,16 +150,16 @@ for sp in lims:
     pln_d = np.linalg.norm([x,y,z])
     p1 = np.array([x,y,z])
     p2 = verts[np.int(sp[7])]
-    # p2 = np.array([p2[0],p2[2],p2[1]])
+    p2 = np.array([p2[0],p2[2],p2[1]])
     p3 = verts[np.int(sp[8])]
-    # p3 = np.array([p3[0], p3[2], p3[1]])
+    p3 = np.array([p3[0], p3[2], p3[1]])
     # print(p1,p2,p3)
     pts = np.column_stack((p1,p2,p3))
     # calculate intersection point between ray and triangle plane
     # t = -(np.dot(pln_nrm,ray_or)+ pln_d)/(np.dot(pln_nrm,ray_dir))
     t_denom = (np.dot(pln_nrm,ray_dir))
     pln_ray_dist = p1 - ray_or
-    t = np.dot(pln_ray_dist,pln_nrm)/t_denom
+    t = np.divide(np.dot(pln_ray_dist,pln_nrm),t_denom)
 
     # print(t)
     pln_ray_int = ray_or + ray_dir*t
@@ -166,17 +168,31 @@ for sp in lims:
     v0 = p3 - p1
     v1 = p2 - p1
     v2 = pln_ray_int - p1
-    # u = ((v1.v1)(v2.v0)-(v1.v0)(v2.v1)) / ((v0.v0)(v1.v1) - (v0.v1)(v1.v0))
-    u = np.divide((np.dot(np.dot(v1,v1),np.dot(v2,v0)) - np.dot(np.dot(v1,v0),np.dot(v2,v1)))
-                  ,np.dot(np.dot(v0,v0),np.dot(v1,v1))-np.dot(np.dot(v0,v1),np.dot(v1,v0)))
-    # v = ((v0.v0)(v2.v1) - (v0.v1)(v2.v0)) / ((v0.v0)(v1.v1) - (v0.v1)(v1.v0))
-    v = np.divide((np.dot(np.dot(v0,v0),np.dot(v2,v1)) - np.dot(np.dot(v0,v1),np.dot(v2,v0)))
-                  ,np.dot(np.dot(v0,v0),np.dot(v1,v1))-np.dot(np.dot(v0,v1),np.dot(v1,v0)))
-    if u >=0 and v>=0:
-        print('hello')
-    print(u,v)
+    dot00 = np.dot(v0, v0)
+    dot01 = np.dot(v0, v1)
+    dot02 = np.dot(v0, v2)
+    dot11 = np.dot(v1, v1)
+    dot12 = np.dot(v1, v2)
+    invDenom = 1 / (dot00 * dot11 - dot01 * dot01)
+    u = (dot11 * dot02 - dot01 * dot12) * invDenom
+    v = (dot00 * dot12 - dot01 * dot02) * invDenom
 
-    plt.scatter(pln_ray_int[0],pln_ray_int[1])
+    if (u >=0) and (v>=0) and (u+v<1):
+        print(p1)
+        print(p2)
+        print(p3)
+        print(pln_ray_int)
+        print('hello')
+        # corners_x = np.array([p1[0], p2[0], p3[0]])
+        # corners_y = np.array([p1[1], p2[1], p3[1]])
+        # corners_z = np.array([p1[2], p2[2], p3[2]])
+        # plt.scatter(corners_x, corners_y)
+        # plt.scatter(pln_ray_int[0], pln_ray_int[1])
+        # plt.show()
+        # print(u+v)
+    # print(u,v)
+
+    # plt.scatter(pln_ray_int[0],pln_ray_int[1])
 
 
 plt.show()
