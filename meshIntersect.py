@@ -94,7 +94,7 @@ end = time.time()
 spheres = tplus
 print('extracted triangle normals, centroids in: ', end-start, ' seconds')
 
-# find square bounding the image points in the mesh
+# find rectangle bounding the image points in the mesh
 # olon = 147.2306000000000097
 # olat = -43.6165000000000020
 posepth = '/home/nader/scratch/stereo_pose_est.data'
