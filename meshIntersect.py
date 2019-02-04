@@ -1,6 +1,5 @@
-from plyfile import PlyData, PlyElement
+from plyfile import PlyData
 import numpy as np
-from sklearn.neighbors import KDTree
 import time
 import geoCropMesh
 import matplotlib.pyplot as plt
