@@ -56,6 +56,7 @@ def tri2triplus(inds, verts):
     n1, n2, n3 = nrm
     return np.array([p1[0],p1[1],p1[2], n1, n2, n3, int(i1),int(i2),int(i3)])
 
+# use osgcong x.ive y.ply to convert mesh into ply format
 mesh = PlyData.read('/home/nader/scratch/mesh_test/final_crop.ply')
 # mesh = PlyData.read('/home/nader/scratch/mesh_test/final.ply')
 # read mesh into 3xn array
@@ -77,7 +78,7 @@ mesh=None
 #
 #     sp = tri2sphere(p1,p2,p3)
 #     spheres = np.vstack((spheres,np.array(sp)))
-#
+#l
 # spheres = spheres[1:][:]
 # end = time.time()
 # print('converted triangles into spheres in: ', end-start, ' seconds')
