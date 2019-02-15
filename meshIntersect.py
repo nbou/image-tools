@@ -56,7 +56,7 @@ def tri2triplus(inds, verts):
     n1, n2, n3 = nrm
     return np.array([p1[0],p1[1],p1[2], n1, n2, n3, int(i1),int(i2),int(i3)])
 
-# use osgcong x.ive y.ply to convert mesh into ply format
+# use osgcong x.ive y.ply to convert mesh into ply format first
 mesh = PlyData.read('/home/nader/scratch/mesh_test/final_crop.ply')
 # mesh = PlyData.read('/home/nader/scratch/mesh_test/final.ply')
 # read mesh into 3xn array
@@ -124,7 +124,7 @@ print('cropped sphere points to image corners in: ', end-start, ' seconds')
 # plt.scatter(spheres[:,0],spheres[:,2])
 # plt.scatter(lims[:,0],lims[:,2])
 # plt.show()
-print(np.shape(lims))
+# print(np.shape(lims))
 # print(lims)
 
 # R1,R2,R3
@@ -147,6 +147,8 @@ ray_or = np.array([ray_or[1],ray_or[0],ray_or[2]])
 # ray_or = np.array([ray_or[1],ray_or[0],ray_or[2]])
 
 # go through each triangle in the mesh and check if the ray intersects it
+num_ints = 0
+intx = []
 for sp in lims:
     x,y,z = [sp[0],sp[2],sp[1]]
     # print(x,y,z)
@@ -181,13 +183,17 @@ for sp in lims:
     u = (dot11 * dot02 - dot01 * dot12) * invDenom
     v = (dot00 * dot12 - dot01 * dot02) * invDenom
     if (u >=0) and (v>=0) and (u+v<1):
-        print(p1)
-        print(p2)
-        print(p3)
-        print(pln_ray_int)
-        print('hello')
-
-    # plt.scatter(pln_ray_int[0],pln_ray_int[1])
-
-
-plt.show()
+        # print(p1)
+        # print(p2)
+        # print(p3)
+        # print(pln_ray_int)
+        # print('hello')
+        #
+        # plt.scatter(pln_ray_int[0],pln_ray_int[1])
+        num_ints+=1
+        intx.append(pln_ray_int)
+#
+#
+# plt.show()
+print(num_ints)
+print(intx)
