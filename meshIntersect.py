@@ -57,7 +57,7 @@ def tri2triplus(inds, verts):
     return np.array([p1[0],p1[1],p1[2], n1, n2, n3, int(i1),int(i2),int(i3)])
 
 # use osgcong x.ive y.ply to convert mesh into ply format first
-mesh = PlyData.read('/home/nader/scratch/mesh_test/final_crop.ply')
+mesh = PlyData.read('/home/nader/scratch/mesh_test/final.ply')
 # mesh = PlyData.read('/home/nader/scratch/mesh_test/final.ply')
 # read mesh into 3xn array
 verts= np.transpose(np.array([mesh['vertex'].data['x'],mesh['vertex'].data['y'],mesh['vertex'].data['z']]))
@@ -83,16 +83,20 @@ mesh=None
 # end = time.time()
 # print('converted triangles into spheres in: ', end-start, ' seconds')
 
-# get centre, normal from triangle indices
-start = time.time()
-tplus = np.array([0,0,0,0,0,0,0,0,0])
-for corner in tri_corners:
-    tplus = np.vstack((tplus,tri2triplus(corner,verts)))
+inp = input('Load presaved mesh? (y/n) ')
+if inp=='y':
+    spheres = np.load('/home/nader/scratch/mesh_test/final.npy')
+else:
+    # get centre, normal from triangle indices
+    start = time.time()
+    tplus = np.array([0,0,0,0,0,0,0,0,0])
+    for corner in tri_corners:
+        tplus = np.vstack((tplus,tri2triplus(corner,verts)))
 
-tplus = tplus[1:][:]
-end = time.time()
-spheres = tplus
-print('extracted triangle normals, centroids in: ', end-start, ' seconds')
+    tplus = tplus[1:][:]
+    end = time.time()
+    spheres = tplus
+    print('extracted triangle normals, centroids in: ', end-start, ' seconds')
 
 # find rectangle bounding the image points in the mesh
 # olon = 147.2306000000000097
@@ -121,9 +125,9 @@ lims = xlim[np.where(np.logical_and(np.greater_equal(ymax, xlim[:,2]),np.less_eq
 end = time.time()
 print('cropped sphere points to image corners in: ', end-start, ' seconds')
 
-# plt.scatter(spheres[:,0],spheres[:,2])
-# plt.scatter(lims[:,0],lims[:,2])
-# plt.show()
+plt.scatter(spheres[:,0],spheres[:,2])
+plt.scatter(lims[:,0],lims[:,2])
+plt.show()
 # print(np.shape(lims))
 # print(lims)
 

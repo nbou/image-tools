@@ -46,7 +46,7 @@ def ply2norms(meshpth, outpth):
     print('extracted triangle normals, centroids in: ', end-start, ' seconds')
     q = input('save output array? (y/n) ')
     if q=='y':
-        np.save(outpth,spheres)
+        np.savez(outpth,spheres)
     return 0
 
 
