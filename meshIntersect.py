@@ -68,18 +68,14 @@ def readInf(inf_path):
         line = line.strip().split(',')
         imnme = os.path.basename(line[0])[:-4]
         x1,y1,x2,y2 = np.array(line[1:5], dtype=np.float32)
-        midpoint = np.array([(x2-x1)/2, (y2-y1)/2])
+        midpoint = np.array([(x2+x1)/2, (y2+y1)/2])
 
         out.append([idx,imnme,midpoint])
         idx+=1
     return out
 
 
-inf_path = '/home/nader/scratch/inf_boxes_huon_13.txt'
-inflines = readInf(inf_path)
-calfile = '/home/nader/scratch/ng2_scaled_baseline.calib'
-posefile = '/home/nader/scratch/stereo_pose_est.data'
-im2geo(calfile,posefile, inflines[0])
+
 
 # use osgcong x.ive y.ply to convert mesh into ply format first
 mesh = PlyData.read('/home/nader/scratch/mesh_test/final.ply')
@@ -103,7 +99,7 @@ mesh=None
 #
 #     sp = tri2sphere(p1,p2,p3)
 #     spheres = np.vstack((spheres,np.array(sp)))
-#l
+#
 # spheres = spheres[1:][:]
 # end = time.time()
 # print('converted triangles into spheres in: ', end-start, ' seconds')
@@ -129,11 +125,17 @@ else:
 posepth = '/home/nader/scratch/stereo_pose_est.data'
 olat,olon = calParser.getOrigin(posepth)
 
-gtfpath = '/home/nader/scratch/PR_20100604_080817_570_LC16.tif'
+inf_path = '/home/nader/scratch/inf_boxes_huon_13.txt'
+inflines = readInf(inf_path)
+print(inflines[0])
+geotif_dir = '/home/nader/scratch'
+geotif_file = inflines[0][1] +'.tif'
+gtfpath = os.path.join(geotif_dir,geotif_file)#'/home/nader/scratch/PR_20100604_080817_570_LC16.tif'
+
 # gtfpath = '/home/nader/scratch/PR_20100604_080818_584_LC16.tif'
 ymin, ymax, xmin, xmax = geoCropMesh.meshCropPts(olon,olat,gtfpath)
 # add buffer to bounds
-buffer = np.float(0.75)
+buffer = np.float(2)
 xmin = xmin - buffer*(xmax-xmin)
 xmax = xmax + buffer*(xmax-xmin)
 ymin = ymin - buffer*(ymax-ymin)
@@ -159,11 +161,18 @@ plt.show()
 # R1,R2,R3
 # Find if/where a ray (generated from im2geo) intersects the spheres
 # ray_dir = np.array([0.05386494, 0.31301034,  0.99528809])#np.array([0.43118462, 0.13044104, 1.00168327])
-ray_dir = np.array([-0.00169494, -0.00685659,  1.00000357])
-ray_dir = np.array([ray_dir[1],ray_dir[0],ray_dir[2]])
-ray_dir = ray_dir/np.linalg.norm(ray_dir)
 
-ray_or = np.array([185.29804681, -548.70514385,   53.60263709])#np.array([ -90.0693583,  -788.12009801,   69.17650223])
+inf_path = '/home/nader/scratch/inf_boxes_huon_13.txt'
+inflines = readInf(inf_path)
+calfile = '/home/nader/scratch/ng2_scaled_baseline.calib'
+posefile = '/home/nader/scratch/stereo_pose_est.data'
+ray_dir, ray_or = im2geo(calfile,posefile, inflines[0])
+
+# ray_dir = np.array([-0.00169494, -0.00685659,  1.00000357])
+ray_dir = np.array([ray_dir[1],ray_dir[0],ray_dir[2]])
+# ray_dir = ray_dir/np.linalg.norm(ray_dir)
+
+# ray_or = np.array([185.29804681, -548.70514385,   53.60263709])#np.array([ -90.0693583,  -788.12009801,   69.17650223])
 ray_or = np.array([ray_or[1],ray_or[0],ray_or[2]])
 
 # # (R3,R2),R1

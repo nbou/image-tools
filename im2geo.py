@@ -14,34 +14,13 @@ def im2geo(calfile, posefile, line):
     # point(s) of interest
     # u,v = 1360/2,1024/2
     u,v = line[2]
-    # pt = np.array([[[u,v]]], dtype=np.float32)
+    pt = np.array([[[u,v]]], dtype=np.float32)
 
     # undistort poi(s)
     pt_undist = cv2.undistortPoints(pt,cam,dist, P=cam)
     # print(pt_undist)
 
 
-    # im = cv2.imread('/home/nader/PR_20090320_061617_702_LC16.pgm', -1)#'/home/nader/SWAP_storage/TAS_LOBS/FRAMES/PR_20100604_084020_800_LC16.png')
-    # cv2.circle(im,(int(u),int(v)),5,(0,0,255),-1)
-    # plt.imshow(im)
-    # plt.show()
-    # im_undist = cv2.undistort(im,cam,dist)
-    #
-    #
-    #
-    # im2 = np.concatenate((im,im_undist), axis=1)
-    # plt.imshow(im2)
-    # plt.show()
-    # cv2.imwrite('im.png', im2)
-
-    # extract vehicle translation and rotation (from stereo_pose_est.data file)
-    # pose 18776 	1275640820.8008968830108643 	-43.6173105794598683 	147.2208324550808243 	-90.0693583031992944 	-788.1200980122725923 	69.1765022273584265 	-0.0051188729680123 	-0.0125153269463330 	-2.8263936263024938 	PR_20100604_084020_800_LC16.png 	PR_20100604_084020_800_RM16.png 	2.2570000000000001 	0.9545548668309964 	0
-    # pose = [18776,1275640820.8008968830108643,-43.6173105794598683,147.2208324550808243,-90.0693583031992944,-788.1200980122725923,69.1765022273584265,-0.0051188729680123,-0.0125153269463330,-2.8263936263024938]#,'PR_20100604_084020_800_LC16.png 	PR_20100604_084020_800_RM16.png 	2.2570000000000001 	0.9545548668309964 	0]
-    # print(np.shape(pose))
-    # 14622 	1275638897.5708909034729004 	-43.6148313541364132 	147.2237999171593685 	185.2980468077252851 	-548.7051438547742919 	53.6026370929670719 	-0.0036693185137814 	-0.0119684021682900 	-0.3926109128526320 	PR_20100604_080817_570_LC16.png
-    #      poseID, timestamp,                   lat                 long                    X  (north)            Y (east)          Z (depth)           X euler (rad)       Y-euler             Z-euler
-    # pose = [14622, 1275638897.5708909034729004,-43.6148313541364132,147.2237999171593685,185.2980468077252851,-548.7051438547742919,53.6026370929670719,-0.0036693185137814,-0.0119684021682900, -0.3926109128526320]
-    #
     posepth = posefile#'/home/nader/scratch/stereo_pose_est.data'
     poseim = line[1] #'PR_20100604_080817_570_LC16'
     pose = calParser.parsePose(posepth,poseim)
@@ -72,9 +51,9 @@ def im2geo(calfile, posefile, line):
     direction = np.matmul(R,hom_pt)
     origin = trns
 
-    print("dir: ", np.shape(direction), '\n', "origin: ", np.shape(origin))
-    print("dir: ", direction, '\n', "origin: ", origin)
-
+    # print("dir: ", np.shape(direction), '\n', "origin: ", np.shape(origin))
+    # print("dir: ", direction, '\n', "origin: ", origin)
+    return direction,origin
 
 # Example .calib file
 # 1360 1024
