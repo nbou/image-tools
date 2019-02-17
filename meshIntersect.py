@@ -4,7 +4,8 @@ import time
 import geoCropMesh
 import matplotlib.pyplot as plt
 import calParser
-
+import os
+from im2geo import im2geo
 
 # function to find the surface normal of a triangle
 def triNorm(p1,p2,p3):
@@ -55,6 +56,30 @@ def tri2triplus(inds, verts):
     # c1, c2, c3 = C
     n1, n2, n3 = nrm
     return np.array([p1[0],p1[1],p1[2], n1, n2, n3, int(i1),int(i2),int(i3)])
+
+# read box positions from output of retinanet_inf_batch.py
+def readInf(inf_path):
+    f = open(inf_path, "r")
+    lines = f.readlines()
+    idx = 0
+
+    out = []
+    for line in lines[1:]:
+        line = line.strip().split(',')
+        imnme = os.path.basename(line[0])[:-4]
+        x1,y1,x2,y2 = np.array(line[1:5], dtype=np.float32)
+        midpoint = np.array([(x2-x1)/2, (y2-y1)/2])
+
+        out.append([idx,imnme,midpoint])
+        idx+=1
+    return out
+
+
+inf_path = '/home/nader/scratch/inf_boxes_huon_13.txt'
+inflines = readInf(inf_path)
+calfile = '/home/nader/scratch/ng2_scaled_baseline.calib'
+posefile = '/home/nader/scratch/stereo_pose_est.data'
+im2geo(calfile,posefile, inflines[0])
 
 # use osgcong x.ive y.ply to convert mesh into ply format first
 mesh = PlyData.read('/home/nader/scratch/mesh_test/final.ply')
