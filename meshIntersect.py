@@ -128,110 +128,113 @@ olat,olon = calParser.getOrigin(posepth)
 inf_path = '/home/nader/scratch/inf_boxes_huon_13.txt'
 inflines = readInf(inf_path)
 print(inflines[0])
-geotif_dir = '/home/nader/scratch'
-geotif_file = inflines[0][1] +'.tif'
-gtfpath = os.path.join(geotif_dir,geotif_file)#'/home/nader/scratch/PR_20100604_080817_570_LC16.tif'
+plt.scatter(spheres[:, 0], spheres[:, 2])
 
-# gtfpath = '/home/nader/scratch/PR_20100604_080818_584_LC16.tif'
-ymin, ymax, xmin, xmax = geoCropMesh.meshCropPts(olon,olat,gtfpath)
-# add buffer to bounds
-buffer = np.float(2)
-xmin = xmin - buffer*(xmax-xmin)
-xmax = xmax + buffer*(xmax-xmin)
-ymin = ymin - buffer*(ymax-ymin)
-ymax = ymax + buffer*(ymax-ymin)
+for i in range(len(inflines)):
+    geotif_dir = '/media/nader/ML_fish_data/lobsters/r20100604_061515_huon_13_deep_in2/renav20100605/i20100604_061515_gtif/'
+    geotif_file = inflines[i][1] +'.tif'
+    gtfpath = os.path.join(geotif_dir,geotif_file)#'/home/nader/scratch/PR_20100604_080817_570_LC16.tif'
+
+    # gtfpath = '/home/nader/scratch/PR_20100604_080818_584_LC16.tif'
+    ymin, ymax, xmin, xmax = geoCropMesh.meshCropPts(olon,olat,gtfpath)
+    # add buffer to bounds
+    buffer = np.float(0.75)
+    xmin = xmin - buffer*(xmax-xmin)
+    xmax = xmax + buffer*(xmax-xmin)
+    ymin = ymin - buffer*(ymax-ymin)
+    ymax = ymax + buffer*(ymax-ymin)
 
 
-# xlim = verts[np.where(np.logical_and(np.greater_equal(xmax,verts[:,0]),np.less_equal(xmin, verts[:,0])))]
-# ylim =  xlim[np.where(np.logical_and(np.greater_equal(ymax, xlim[:,2]),np.less_equal(ymin, xlim[:,2])))]
+    # xlim = verts[np.where(np.logical_and(np.greater_equal(xmax,verts[:,0]),np.less_equal(xmin, verts[:,0])))]
+    # ylim =  xlim[np.where(np.logical_and(np.greater_equal(ymax, xlim[:,2]),np.less_equal(ymin, xlim[:,2])))]
 
-# crop spheres matrix using the corners from the chosen image
-start=time.time()
-xlim = spheres[np.where(np.logical_and(np.greater_equal(xmax,spheres[:,0]),np.less_equal(xmin, spheres[:,0])))]
-lims = xlim[np.where(np.logical_and(np.greater_equal(ymax, xlim[:,2]),np.less_equal(ymin, xlim[:,2])))]
-end = time.time()
-print('cropped sphere points to image corners in: ', end-start, ' seconds')
+    # crop spheres matrix using the corners from the chosen image
+    start=time.time()
+    xlim = spheres[np.where(np.logical_and(np.greater_equal(xmax,spheres[:,0]),np.less_equal(xmin, spheres[:,0])))]
+    lims = xlim[np.where(np.logical_and(np.greater_equal(ymax, xlim[:,2]),np.less_equal(ymin, xlim[:,2])))]
+    end = time.time()
+    # print('cropped sphere points to image corners in: ', end-start, ' seconds')
 
-plt.scatter(spheres[:,0],spheres[:,2])
-plt.scatter(lims[:,0],lims[:,2])
+    # plt.scatter(spheres[:,0],spheres[:,2])
+    # plt.scatter(lims[:,0],lims[:,2])
+    # plt.show()
+    # print(np.shape(lims))
+    # print(lims)
+
+    # R1,R2,R3
+    # Find if/where a ray (generated from im2geo) intersects the spheres
+    # ray_dir = np.array([0.05386494, 0.31301034,  0.99528809])#np.array([0.43118462, 0.13044104, 1.00168327])
+
+    # inf_path = '/home/nader/scratch/inf_boxes_huon_13.txt'
+    # inflines = readInf(inf_path)
+    calfile = '/home/nader/scratch/ng2_scaled_baseline.calib'
+    posefile = '/home/nader/scratch/stereo_pose_est.data'
+    ray_dir, ray_or = im2geo(calfile,posefile, inflines[i])
+
+    # ray_dir = np.array([-0.00169494, -0.00685659,  1.00000357])
+    ray_dir = np.array([ray_dir[1],ray_dir[0],ray_dir[2]])
+    # ray_dir = ray_dir/np.linalg.norm(ray_dir)
+
+    # ray_or = np.array([185.29804681, -548.70514385,   53.60263709])#np.array([ -90.0693583,  -788.12009801,   69.17650223])
+    ray_or = np.array([ray_or[1],ray_or[0],ray_or[2]])
+
+    # # (R3,R2),R1
+    # # Find if/where a ray (generated from im2geo) intersects the spheres
+    # ray_dir = np.array([0.05840763, 0.31392563, 1.00327564])#np.array([0.43118462, 0.13044104, 1.00168327])
+    # ray_dir = np.array([ray_dir[1],ray_dir[0],ray_dir[2]])
+    # ray_dir = ray_dir/np.linalg.norm(ray_dir)
+    #
+    # ray_or = np.array([185.29804681, -548.70514385,   53.60263709])#np.array([ -90.0693583,  -788.12009801,   69.17650223])
+    # ray_or = np.array([ray_or[1],ray_or[0],ray_or[2]])
+
+    # go through each triangle in the mesh and check if the ray intersects it
+    num_ints = 0
+    intx = []
+    for sp in lims:
+        x,y,z = [sp[0],sp[2],sp[1]]
+        # print(x,y,z)
+        pln_nrm = sp[3:6]   # extract normal for triangle
+        pln_nrm = np.array([pln_nrm[0],pln_nrm[2],pln_nrm[1]])  # shuffle the xyz coords to match the ray
+        # print(sp, pln_nrm)
+        pln_nrm = pln_nrm/np.linalg.norm(pln_nrm)   # normalise triangle normal
+        pln_d = np.linalg.norm([x,y,z])   # d in plane equation (distance from point to (0,0,0))
+        # specify triangle vertices p1,p2,p3
+        p1 = np.array([x,y,z])
+        p2 = verts[np.int(sp[7])]
+        p2 = np.array([p2[0],p2[2],p2[1]])
+        p3 = verts[np.int(sp[8])]
+        p3 = np.array([p3[0], p3[2], p3[1]])
+
+        # calculate intersection point between ray (origin + t*direction) and triangle plane
+        t_denom = (np.dot(ray_dir,pln_nrm))
+        pln_ray_dist = p1 - ray_or
+        t = np.divide(np.dot(pln_ray_dist,pln_nrm),t_denom)
+        pln_ray_int = ray_or + ray_dir*t
+
+        # check if point is inside triangle (using barycentric method http://blackpawn.com/texts/pointinpoly/)
+        v0 = p3 - p1
+        v1 = p2 - p1
+        v2 = pln_ray_int - p1
+        dot00 = np.dot(v0, v0)
+        dot01 = np.dot(v0, v1)
+        dot02 = np.dot(v0, v2)
+        dot11 = np.dot(v1, v1)
+        dot12 = np.dot(v1, v2)
+        invDenom = 1 / (dot00 * dot11 - dot01 * dot01)
+        u = (dot11 * dot02 - dot01 * dot12) * invDenom
+        v = (dot00 * dot12 - dot01 * dot02) * invDenom
+        if (u >=0) and (v>=0) and (u+v<1):
+            # print(p1)
+            # print(p2)
+            # print(p3)
+            # print(pln_ray_int)
+            # print('hello')
+            #
+            plt.scatter(pln_ray_int[0],pln_ray_int[1])
+            num_ints+=1
+            intx.append(pln_ray_int)
+    #
+    #
 plt.show()
-# print(np.shape(lims))
-# print(lims)
-
-# R1,R2,R3
-# Find if/where a ray (generated from im2geo) intersects the spheres
-# ray_dir = np.array([0.05386494, 0.31301034,  0.99528809])#np.array([0.43118462, 0.13044104, 1.00168327])
-
-inf_path = '/home/nader/scratch/inf_boxes_huon_13.txt'
-inflines = readInf(inf_path)
-calfile = '/home/nader/scratch/ng2_scaled_baseline.calib'
-posefile = '/home/nader/scratch/stereo_pose_est.data'
-ray_dir, ray_or = im2geo(calfile,posefile, inflines[0])
-
-# ray_dir = np.array([-0.00169494, -0.00685659,  1.00000357])
-ray_dir = np.array([ray_dir[1],ray_dir[0],ray_dir[2]])
-# ray_dir = ray_dir/np.linalg.norm(ray_dir)
-
-# ray_or = np.array([185.29804681, -548.70514385,   53.60263709])#np.array([ -90.0693583,  -788.12009801,   69.17650223])
-ray_or = np.array([ray_or[1],ray_or[0],ray_or[2]])
-
-# # (R3,R2),R1
-# # Find if/where a ray (generated from im2geo) intersects the spheres
-# ray_dir = np.array([0.05840763, 0.31392563, 1.00327564])#np.array([0.43118462, 0.13044104, 1.00168327])
-# ray_dir = np.array([ray_dir[1],ray_dir[0],ray_dir[2]])
-# ray_dir = ray_dir/np.linalg.norm(ray_dir)
-#
-# ray_or = np.array([185.29804681, -548.70514385,   53.60263709])#np.array([ -90.0693583,  -788.12009801,   69.17650223])
-# ray_or = np.array([ray_or[1],ray_or[0],ray_or[2]])
-
-# go through each triangle in the mesh and check if the ray intersects it
-num_ints = 0
-intx = []
-for sp in lims:
-    x,y,z = [sp[0],sp[2],sp[1]]
-    # print(x,y,z)
-    pln_nrm = sp[3:6]   # extract normal for triangle
-    pln_nrm = np.array([pln_nrm[0],pln_nrm[2],pln_nrm[1]])  # shuffle the xyz coords to match the ray
-    # print(sp, pln_nrm)
-    pln_nrm = pln_nrm/np.linalg.norm(pln_nrm)   # normalise triangle normal
-    pln_d = np.linalg.norm([x,y,z])   # d in plane equation (distance from point to (0,0,0))
-    # specify triangle vertices p1,p2,p3
-    p1 = np.array([x,y,z])
-    p2 = verts[np.int(sp[7])]
-    p2 = np.array([p2[0],p2[2],p2[1]])
-    p3 = verts[np.int(sp[8])]
-    p3 = np.array([p3[0], p3[2], p3[1]])
-
-    # calculate intersection point between ray (origin + t*direction) and triangle plane
-    t_denom = (np.dot(ray_dir,pln_nrm))
-    pln_ray_dist = p1 - ray_or
-    t = np.divide(np.dot(pln_ray_dist,pln_nrm),t_denom)
-    pln_ray_int = ray_or + ray_dir*t
-
-    # check if point is inside triangle (using barycentric method http://blackpawn.com/texts/pointinpoly/)
-    v0 = p3 - p1
-    v1 = p2 - p1
-    v2 = pln_ray_int - p1
-    dot00 = np.dot(v0, v0)
-    dot01 = np.dot(v0, v1)
-    dot02 = np.dot(v0, v2)
-    dot11 = np.dot(v1, v1)
-    dot12 = np.dot(v1, v2)
-    invDenom = 1 / (dot00 * dot11 - dot01 * dot01)
-    u = (dot11 * dot02 - dot01 * dot12) * invDenom
-    v = (dot00 * dot12 - dot01 * dot02) * invDenom
-    if (u >=0) and (v>=0) and (u+v<1):
-        # print(p1)
-        # print(p2)
-        # print(p3)
-        # print(pln_ray_int)
-        # print('hello')
-        #
-        # plt.scatter(pln_ray_int[0],pln_ray_int[1])
-        num_ints+=1
-        intx.append(pln_ray_int)
-#
-#
-# plt.show()
-print(num_ints)
-print(intx)
+# print(num_ints)
+# print(intx)
