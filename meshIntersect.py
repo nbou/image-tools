@@ -128,8 +128,8 @@ olat,olon = calParser.getOrigin(posepth)
 inf_path = '/home/nader/scratch/inf_boxes_huon_13.txt'
 inflines = readInf(inf_path)
 print(inflines[0])
-plt.scatter(spheres[:, 0], spheres[:, 2])
-
+# plt.scatter(spheres[:, 0], spheres[:, 2])
+intx=[]
 for i in range(len(inflines)):
     geotif_dir = '/media/nader/ML_fish_data/lobsters/r20100604_061515_huon_13_deep_in2/renav20100605/i20100604_061515_gtif/'
     geotif_file = inflines[i][1] +'.tif'
@@ -189,7 +189,7 @@ for i in range(len(inflines)):
 
     # go through each triangle in the mesh and check if the ray intersects it
     num_ints = 0
-    intx = []
+    # intx = []
     for sp in lims:
         x,y,z = [sp[0],sp[2],sp[1]]
         # print(x,y,z)
@@ -237,4 +237,4 @@ for i in range(len(inflines)):
     #
 plt.show()
 # print(num_ints)
-# print(intx)
+np.save('/home/nader/scratch/lobsterpts_3d', intx)
