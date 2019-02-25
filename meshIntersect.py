@@ -57,8 +57,8 @@ def tri2triplus(inds, verts):
     n1, n2, n3 = nrm
     return np.array([p1[0],p1[1],p1[2], n1, n2, n3, int(i1),int(i2),int(i3)])
 
-# read box positions from output of retinanet_inf_batch.py
-def readInf(inf_path):
+# read box positions from output of retinanet_inf_batch.py, filter detections with score less than filt
+def readInf(inf_path, filt):
     f = open(inf_path, "r")
     lines = f.readlines()
     idx = 0
@@ -66,11 +66,12 @@ def readInf(inf_path):
     out = []
     for line in lines[1:]:
         line = line.strip().split(',')
-        imnme = os.path.basename(line[0])[:-4]
-        x1,y1,x2,y2 = np.array(line[1:5], dtype=np.float32)
-        midpoint = np.array([(x2+x1)/2, (y2+y1)/2])
+        if np.float(line[5]) >= filt:
+            imnme = os.path.basename(line[0])[:-4]
+            x1,y1,x2,y2 = np.array(line[1:5], dtype=np.float32)
+            midpoint = np.array([(x2+x1)/2, (y2+y1)/2])
 
-        out.append([idx,imnme,midpoint])
+            out.append([idx,imnme,midpoint])
         idx+=1
     return out
 
@@ -126,11 +127,17 @@ posepth = '/home/nader/scratch/stereo_pose_est.data'
 olat,olon = calParser.getOrigin(posepth)
 
 inf_path = '/home/nader/scratch/inf_boxes_huon_13.txt'
-inflines = readInf(inf_path)
-print(inflines[0])
-# plt.scatter(spheres[:, 0], spheres[:, 2])
+
+# read in inferences,
+filt = 0.714  # minimum probability for detections
+inflines = readInf(inf_path, filt)
+# print(inflines[0])
+plt.scatter(spheres[:, 0], spheres[:, 2])
+
+
 intx=[]
 for i in range(len(inflines)):
+    print('reading detection {0} of {1}'.format(i,len(inflines)))
     geotif_dir = '/media/nader/ML_fish_data/lobsters/r20100604_061515_huon_13_deep_in2/renav20100605/i20100604_061515_gtif/'
     geotif_file = inflines[i][1] +'.tif'
     gtfpath = os.path.join(geotif_dir,geotif_file)#'/home/nader/scratch/PR_20100604_080817_570_LC16.tif'
@@ -233,6 +240,7 @@ for i in range(len(inflines)):
             plt.scatter(pln_ray_int[0],pln_ray_int[1])
             num_ints+=1
             intx.append(pln_ray_int)
+
     #
     #
 plt.show()
