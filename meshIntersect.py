@@ -78,8 +78,9 @@ def readInf(inf_path, filt):
 
 
 
-# use osgcong x.ive y.ply to convert mesh into ply format first
-mesh = PlyData.read('/home/nader/scratch/mesh_test/final.ply')
+# use osgcong x.ive y.obj, then use meshlab to to convert mesh into ply format first
+# mesh = PlyData.read('/home/nader/scratch/mesh_test/final.ply')
+mesh = PlyData.read('/home/nader/scratch/mesh_test/new/huon_13_main_bit.ply')
 # mesh = PlyData.read('/home/nader/scratch/mesh_test/final.ply')
 # read mesh into 3xn array
 verts= np.transpose(np.array([mesh['vertex'].data['x'],mesh['vertex'].data['y'],mesh['vertex'].data['z']]))
@@ -107,7 +108,8 @@ mesh=None
 
 inp = input('Load presaved mesh? (y/n) ')
 if inp=='y':
-    spheres = np.load('/home/nader/scratch/mesh_test/final.npy')
+    # spheres = np.load('/home/nader/scratch/mesh_test/final.npy')
+    spheres = np.load('/home/nader/scratch/mesh_test/final_new.npy')
 else:
     # get centre, normal from triangle indices
     start = time.time()
@@ -129,13 +131,14 @@ olat,olon = calParser.getOrigin(posepth)
 inf_path = '/home/nader/scratch/inf_boxes_huon_13.txt'
 
 # read in inferences,
-filt = 0.714  # minimum probability for detections
+filt = 0.8224  # minimum probability for detections
 inflines = readInf(inf_path, filt)
 # print(inflines[0])
 plt.scatter(spheres[:, 0], spheres[:, 2])
 
 
 intx=[]
+det_indices = []
 for i in range(len(inflines)):
     print('reading detection {0} of {1}'.format(i,len(inflines)))
     geotif_dir = '/media/nader/ML_fish_data/lobsters/r20100604_061515_huon_13_deep_in2/renav20100605/i20100604_061515_gtif/'
@@ -195,8 +198,10 @@ for i in range(len(inflines)):
     # ray_or = np.array([ray_or[1],ray_or[0],ray_or[2]])
 
     # go through each triangle in the mesh and check if the ray intersects it
-    num_ints = 0
+
     # intx = []
+    temp_intercepts = []
+    num_ints = 0
     for sp in lims:
         x,y,z = [sp[0],sp[2],sp[1]]
         # print(x,y,z)
@@ -230,6 +235,7 @@ for i in range(len(inflines)):
         invDenom = 1 / (dot00 * dot11 - dot01 * dot01)
         u = (dot11 * dot02 - dot01 * dot12) * invDenom
         v = (dot00 * dot12 - dot01 * dot02) * invDenom
+
         if (u >=0) and (v>=0) and (u+v<1):
             # print(p1)
             # print(p2)
@@ -237,12 +243,22 @@ for i in range(len(inflines)):
             # print(pln_ray_int)
             # print('hello')
             #
-            plt.scatter(pln_ray_int[0],pln_ray_int[1])
             num_ints+=1
-            intx.append(pln_ray_int)
+            temp_intercepts.append(pln_ray_int)
 
-    #
-    #
+            # tst = [int(inflines[i][0]), pln_ray_int[0],pln_ray_int[1], pln_ray_int[2]]
+            # intx.append(pln_ray_int)
+            #
+            # det_indices.append(tst)
+            # break
+    if num_ints>0:
+        pln_ray_int_med = np.median(temp_intercepts,axis=0)
+        plt.scatter(pln_ray_int_med[0], pln_ray_int_med[1])
+        intx.append(pln_ray_int_med)
+        tst =[int(inflines[i][0]), str(inflines[i][1])]#, pln_ray_int[0],pln_ray_int[1], pln_ray_int[2]]
+        det_indices.append(tst)
 plt.show()
-# print(num_ints)
+
 np.save('/home/nader/scratch/lobsterpts_3d', intx)
+
+np.save('/home/nader/scratch/lobsterpt_indices', det_indices)
